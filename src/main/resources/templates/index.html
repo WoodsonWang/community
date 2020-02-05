@@ -16,7 +16,7 @@
     <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-<p th:text="'Hello, ' + ${name} + '!'" />
+<!--<p th:text="'Hello, ' + ${name} + '!'" />-->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">码农广场</a>
@@ -25,11 +25,17 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="搜索问题" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索问题</button>
+        </form>
         <ul class="navbar-nav mr-auto">
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="搜索问题" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索问题</button>
-            </form>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">码农广场<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/login/oauth/authorize?client_id=c79f59144879e3e92c47&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     我
