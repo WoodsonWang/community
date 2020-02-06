@@ -33,22 +33,25 @@
             <li class="nav-item active">
                 <a class="nav-link" href="#">码农广场<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://github.com/login/oauth/authorize?client_id=c79f59144879e3e92c47&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    我
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">消息中心</a>
-                    <!--                    分割线-->
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">个人资料</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">退出登录</a>
-                </div>
-            </li>
+            <div th:switch="${session.user == null}">
+                <li th:case="true" class="nav-item">
+                    <a class="nav-link" href="https://github.com/login/oauth/authorize?client_id=c79f59144879e3e92c47&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a>
+                </li>
+                <li th:case="false" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span  th:text="${session.user.getName()}"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">消息中心</a>
+                        <!--                    分割线-->
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">个人资料</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">退出登录</a>
+                    </div>
+                </li>
+            </div>
+
 
         </ul>
 

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 实现github的认证登录功能
  *
@@ -29,8 +31,8 @@ public class AuthorizeController {
 
     @GetMapping("/callback")
     public String callback(@RequestParam(name = "code") String code,
-                           @RequestParam(name = "state") String state){
-
+                           @RequestParam(name = "state") String state,
+                           HttpServletRequest request){
 
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
         accessTokenDTO.setCode(code);
@@ -40,8 +42,16 @@ public class AuthorizeController {
         accessTokenDTO.setClient_secret(clientSecret);
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser githubUser = githubProvider.getGithubUser(accessToken);
-        System.out.println(githubUser.getName());
+        if (githubUser != null) {
+            //登录成功
+            request.getSession().setAttribute("user",githubUser);
+            return "redirect:/";
 
-        return "index";
+        } else {
+            //登录失败
+            return "redirect:/";
+        }
+
+
     }
 }
