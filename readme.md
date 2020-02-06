@@ -12,3 +12,5 @@
 [Okhttp maven 引用](https://search.maven.org/artifact/com.squareup.okhttp3/okhttp/4.3.1/jar)
 
 [maven仓库](https://mvnrepository.com/)
+
+[H2数据库使用](http://www.h2database.com/html/quickstart.html)
