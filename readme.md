@@ -14,3 +14,11 @@
 [maven仓库](https://mvnrepository.com/)
 
 [H2数据库使用](http://www.h2database.com/html/quickstart.html)
+
+[Spring boot 整合 Mybatis](https://mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/)
+
+[Spring boot 内置数据库支持](https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/htmlsingle/#boot-features-embedded-database-support)
+
+[小匠Github Community地址](https://github.com/codedrinker/community)
+
+
