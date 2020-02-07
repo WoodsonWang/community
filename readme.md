@@ -21,4 +21,8 @@
 
 [小匠Github Community地址](https://github.com/codedrinker/community)
 
+[flyway使用](https://flywaydb.org/getstarted/firststeps/maven)
+
+[命令行使用mvn的配置](https://www.runoob.com/maven/maven-setup.html)
+
 
