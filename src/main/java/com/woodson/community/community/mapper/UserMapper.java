@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface UserMapper {
 //    #{name}自动提取出user中的name
-    @Insert("insert into USER(NAME,account_id,token,gmt_create,gmt_modified) values (#{name},#{accountId},#{token},#{gmtCreate},#{gmtModified})")
+    @Insert("insert into USER(NAME,account_id,token,gmt_create,gmt_modified,head) values (#{name},#{accountId},#{token},#{gmtCreate},#{gmtModified},#{head})")
     void insert(User user);
     @Select("select * from user where token = #{token}")
     User findByToken(@Param("token") String token);

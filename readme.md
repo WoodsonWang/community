@@ -25,4 +25,7 @@
 
 [命令行使用mvn的配置](https://www.runoob.com/maven/maven-setup.html)
 
+[lombok](https://projectlombok.org/setup/maven)
+使用@Data注解就不用了再写getter和setter方法了
+
 
