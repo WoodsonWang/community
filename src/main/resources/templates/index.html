@@ -4,6 +4,7 @@
     <title>码农广场</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/community.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="js/jquery-3.4.1.js"></script>
@@ -36,7 +37,7 @@
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
             <ul class="nav navbar-nav navbar-right" th:switch="${session.user == null}">
-
+                <li th:if="${session.user != null}"><a href="publish">发布</a></li>
                 <li th:case="true"><a  href="https://github.com/login/oauth/authorize?client_id=c79f59144879e3e92c47&redirect_uri=http://localhost:8887/callback&scope=user&state=1" >登录</a> </li>
                 <li class="dropdown" th:case="false" >
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" th:text="${session.user.getName()}"><span class="caret"></span></a>
