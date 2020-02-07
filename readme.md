@@ -28,4 +28,7 @@
 [lombok](https://projectlombok.org/setup/maven)
 使用@Data注解就不用了再写getter和setter方法了
 
+[spring 网页模板中的标签](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#setting-attribute-values)
+
+
 

@@ -8,3 +8,13 @@ body{
     float: right;
     margin-bottom: 15px;
 }
+.media-object{
+    width: 42px;
+    height: 42px;
+}
+
+.index-question-description-font{
+    font-size: 12px;
+    font-weight: normal;
+    color: #999;
+}
