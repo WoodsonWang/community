@@ -1,6 +1,6 @@
-package com.woodson.community.community.dto;
+package com.woodson.community.dto;
 
-import com.woodson.community.community.model.User;
+import com.woodson.community.model.User;
 import lombok.Data;
 @Data
 public class QuestionDTO {

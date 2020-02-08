@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>码农广场</title>
+    <title th:text="${sectionName}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/community.css">
@@ -20,12 +20,11 @@
 <div class="container main">
     <div class="row">
         <div class="col-lg-9 col-md-12 clo-sm-12 col-12" >
-            <h2>
-                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                发现
+            <h2 th:text="${sectionName}">
+
             </h2>
             <hr>
-<!--            循环显示问题-->
+            <!--            循环显示问题-->
             <div th:each="question:${questions.questionDTOS}">
 
                 <div class="media">
@@ -57,9 +56,9 @@
                     <li th:if="${questions.currentPage}+1<${questions.totalPage}" ><a th:href="@{/(page=${questions.currentPage}+1)}" th:text="${questions.currentPage}+1"></a></li>
                     <li th:if="${questions.currentPage}+2<${questions.totalPage}" ><a th:href="@{/(page=${questions.currentPage}+2)}" th:text="${questions.currentPage}+2"></a></li>
 
-<!--                    <li th:each="index:${questions.currentPage}">-->
-<!--                        <a th:href="@{/(page=${index})}" th:text="${index}"></a>-->
-<!--                    </li>-->
+                    <!--                    <li th:each="index:${questions.currentPage}">-->
+                    <!--                        <a th:href="@{/(page=${index})}" th:text="${index}"></a>-->
+                    <!--                    </li>-->
 
                     <li>
                         <a href="#" aria-label="Next">
@@ -71,7 +70,16 @@
 
         </div>
         <div class="col-lg-3 col-md-12 clo-sm-12 col-12" >
-            <h3>热门话题</h3>
+<!--            列表组-->
+            <div class="list-group">
+                <a href="#" class="list-group-item active" th:class="${section} == 'myQuestion'?'active':''">
+                    我的提问
+                </a>
+                <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                <a href="#" class="list-group-item">Morbi leo risus</a>
+                <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                <a href="#" class="list-group-item">Vestibulum at eros</a>
+            </div>
         </div>
     </div>
 </div>

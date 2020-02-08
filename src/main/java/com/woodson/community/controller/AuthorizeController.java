@@ -1,10 +1,11 @@
-package com.woodson.community.community.controller;
+package com.woodson.community.controller;
 
-import com.woodson.community.community.dto.AccessTokenDTO;
-import com.woodson.community.community.dto.GithubUser;
-import com.woodson.community.community.mapper.UserMapper;
-import com.woodson.community.community.model.User;
-import com.woodson.community.community.provider.GithubProvider;
+import com.woodson.community.dto.AccessTokenDTO;
+import com.woodson.community.dto.GithubUser;
+import com.woodson.community.mapper.UserMapper;
+import com.woodson.community.model.User;
+import com.woodson.community.provider.GithubProvider;
+import com.woodson.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -30,7 +31,8 @@ public class AuthorizeController {
     //默认需要接口实现，加上这句就不会飘红了
     @Autowired(required = false)
     private UserMapper userMapper;
-
+    @Autowired(required = false)
+    private UserService userService;
     @Value("${github.client.id}")
     private String clientId;
     @Value("${github.client.secret}")
@@ -62,7 +64,7 @@ public class AuthorizeController {
             user.setAccountId(String.valueOf(githubUser.getId()));
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtCreate());
-            userMapper.insert(user);
+            userService.createOrUpdate(user);
 //            request.getSession().setAttribute("user",githubUser);
             response.addCookie(new Cookie("token",token));
             return "redirect:/";
@@ -74,5 +76,14 @@ public class AuthorizeController {
         }
 
 
+    }
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request,
+                         HttpServletResponse response){
+        request.getSession().removeAttribute("user");
+        Cookie cookie = new Cookie("token", null);
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+        return "redirect:/";
     }
 }

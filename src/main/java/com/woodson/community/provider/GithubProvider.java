@@ -1,8 +1,8 @@
-package com.woodson.community.community.provider;
+package com.woodson.community.provider;
 
 import com.alibaba.fastjson.JSON;
-import com.woodson.community.community.dto.AccessTokenDTO;
-import com.woodson.community.community.dto.GithubUser;
+import com.woodson.community.dto.AccessTokenDTO;
+import com.woodson.community.dto.GithubUser;
 import okhttp3.*;
 import org.springframework.stereotype.Component;
 

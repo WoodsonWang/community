@@ -1,4 +1,4 @@
-package com.woodson.community.community.dto;
+package com.woodson.community.dto;
 
 public class AccessTokenDTO {
     private String client_id;

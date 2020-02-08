@@ -1,10 +1,11 @@
-package com.woodson.community.community.service;
+package com.woodson.community.service;
 
-import com.woodson.community.community.dto.QuestionDTO;
-import com.woodson.community.community.mapper.QuestionMapper;
-import com.woodson.community.community.mapper.UserMapper;
-import com.woodson.community.community.model.Question;
-import com.woodson.community.community.model.User;
+import com.woodson.community.dto.PageDTO;
+import com.woodson.community.dto.QuestionDTO;
+import com.woodson.community.mapper.QuestionMapper;
+import com.woodson.community.mapper.UserMapper;
+import com.woodson.community.model.Question;
+import com.woodson.community.model.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,9 +25,11 @@ public class QuestionService {
     @Autowired(required = false)
     private QuestionMapper questionMapper;
 
-    public List<QuestionDTO> getQuestions() {
+    public PageDTO getQuestions(Integer page, Integer size) {
+        Integer index = size*(page-1);
+        PageDTO pageDTO = new PageDTO();
         List<QuestionDTO> questionDTOList = new ArrayList<>();
-        List<Question> questions = questionMapper.getQuestions();
+        List<Question> questions = questionMapper.getQuestions(index,size);
         for (Question question : questions) {
             User user = userMapper.findUserByID(question.getCreator());
             QuestionDTO questionDTO = new QuestionDTO();
@@ -36,7 +39,18 @@ public class QuestionService {
             questionDTOList.add(questionDTO);
 
         }
-        return questionDTOList;
+        pageDTO.setQuestionDTOS(questionDTOList);
+        Integer totalCount = questionMapper.getPageCount();
+        pageDTO.setCurrentPage(page);
+        pageDTO.setPage(totalCount,size);
+        return pageDTO;
 
     }
+
+    public PageDTO getQuestionsById(Integer page, Integer size,Integer id){
+
+        return new PageDTO();
+    }
+
+
 }

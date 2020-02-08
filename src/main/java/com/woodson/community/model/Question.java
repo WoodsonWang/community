@@ -1,4 +1,4 @@
-package com.woodson.community.community.model;
+package com.woodson.community.model;
 
 import lombok.Data;
 
