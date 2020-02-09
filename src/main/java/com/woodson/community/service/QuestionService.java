@@ -58,4 +58,12 @@ public class QuestionService {
     }
 
 
+    public QuestionDTO getQuestionById(Integer id) {
+        Question question = questionMapper.getQuestionById(id);
+        User user = userMapper.selectByPrimaryKey(question.getCreator());
+        QuestionDTO questionDTO = new QuestionDTO();
+        BeanUtils.copyProperties(question,questionDTO);
+        questionDTO.setUser(user);
+        return questionDTO;
+    }
 }

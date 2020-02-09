@@ -18,5 +18,6 @@ public interface QuestionMapper {
     @Select("select count(1) from question")
     Integer getPageCount();
 
-
+    @Select("select * from question where id = #{id}")
+    Question getQuestionById(@Param("id") Integer id);
 }

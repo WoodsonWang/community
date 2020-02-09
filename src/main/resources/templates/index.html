@@ -3,12 +3,12 @@
 <head>
     <title>码农广场</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/community.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/community.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <script src="js/jquery-3.4.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/jquery-3.4.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
     <!--    <script src="js/bootstrap.bundle.min.js"></script>-->
 
@@ -35,7 +35,7 @@
                         </a>
                     </div>
                     <div class="media-body">
-                        <h4 class="media-heading" th:text="${question.title}"></h4>
+                        <h4 class="media-heading" ><a th:text="${question.title}" th:href="@{'/question/'+${question.id}}"></a></h4>
                         <span class="index-question-description-font">
                             <span th:text="${question.viewCount}"></span>次浏览·
                             <span th:text="${question.likeCount}"></span>人喜欢·
