@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>码农广场</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/community.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+    <!--    <script src="js/bootstrap.bundle.min.js"></script>-->
+
+</head>
+<body>
+<nav th:replace="navigation::navigation"></nav>
+
+
+<div class="container main">
+    <div class="row">
+        <div class="col-lg-9 col-md-12 clo-sm-12 col-12" >
+            <h2>
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                发现
+            </h2>
+            <hr>
+<!--            循环显示问题-->
+            <div th:each="question:${questions.questionDTOS}">
+
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" th:src="${question.user.head}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading" th:text="${question.title}"></h4>
+                        <span class="index-question-description-font">
+                            <span th:text="${question.viewCount}"></span>次浏览·
+                            <span th:text="${question.likeCount}"></span>人喜欢·
+                            <span th:text="${#calendars.format(question.gmtCreate,'yyyy mm dd HH:mm')}"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li th:if="${questions.currentPage}-2>0" ><a th:href="@{/(page=${questions.currentPage}-2)}" th:text="${questions.currentPage}-2"></a></li>
+                    <li th:if="${questions.currentPage}-1>0" ><a th:href="@{/(page=${questions.currentPage}-1)}" th:text="${questions.currentPage}-1"></a></li>
+                    <li class="active"><a  th:href="@{/(page=${questions.currentPage})}"  th:text="${questions.currentPage}"></a></li>
+                    <li th:if="${questions.currentPage}+1<${questions.totalPage}" ><a th:href="@{/(page=${questions.currentPage}+1)}" th:text="${questions.currentPage}+1"></a></li>
+                    <li th:if="${questions.currentPage}+2<${questions.totalPage}" ><a th:href="@{/(page=${questions.currentPage}+2)}" th:text="${questions.currentPage}+2"></a></li>
+
+<!--                    <li th:each="index:${questions.currentPage}">-->
+<!--                        <a th:href="@{/(page=${index})}" th:text="${index}"></a>-->
+<!--                    </li>-->
+
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+        <div class="col-lg-3 col-md-12 clo-sm-12 col-12" >
+            <h3>热门话题</h3>
+        </div>
+    </div>
+</div>
+</body>
+</html>
