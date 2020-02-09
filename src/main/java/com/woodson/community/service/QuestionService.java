@@ -2,6 +2,8 @@ package com.woodson.community.service;
 
 import com.woodson.community.dto.PageDTO;
 import com.woodson.community.dto.QuestionDTO;
+import com.woodson.community.exception.CustomizeErrorCode;
+import com.woodson.community.exception.CustomizeException;
 import com.woodson.community.mapper.QuestionMapper;
 import com.woodson.community.mapper.UserMapper;
 import com.woodson.community.model.Question;
@@ -30,8 +32,11 @@ public class QuestionService {
         PageDTO pageDTO = new PageDTO();
         List<QuestionDTO> questionDTOList = new ArrayList<>();
         List<Question> questions = questionMapper.getQuestions(index,size);
+        if (questions == null || questions.size() ==0 ){
+            throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+        }
         for (Question question : questions) {
-            User user = userMapper.findUserByID(question.getCreator());
+            User user = userMapper.selectByPrimaryKey(question.getCreator());
             QuestionDTO questionDTO = new QuestionDTO();
 //            将question中的数据复制到questionDTO对象中
             BeanUtils.copyProperties(question,questionDTO);
