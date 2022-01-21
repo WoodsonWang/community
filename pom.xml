@@ -62,7 +62,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.200</version>
+            <version>2.1.210</version>
         </dependency>
 <!--        整合mybatis-->
         <dependency>
@@ -106,7 +106,7 @@
                     <dependency>
                         <groupId>com.h2database</groupId>
                         <artifactId>h2</artifactId>
-                        <version>1.4.200</version>
+                        <version>2.1.210</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -120,7 +120,7 @@
                     <dependency>
                         <groupId>com.h2database</groupId>
                         <artifactId>h2</artifactId>
-                        <version>1.4.200</version>
+                        <version>2.1.210</version>
                     </dependency>
                 </dependencies>
             </plugin>
